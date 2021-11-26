@@ -2,8 +2,8 @@ package br.com.zup.ZupFy.artista;
 
 
 import br.com.zup.ZupFy.album.Album;
+import br.com.zup.ZupFy.enums.Generos;
 import br.com.zup.ZupFy.gravadora.Gravadora;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,7 +18,8 @@ public class Artista {
   @Column(nullable = false)
   private String nome;
   @Column(nullable = false)
-  private String genero;
+  @Enumerated(EnumType.STRING)
+  private Generos genero;
   @Column(nullable = false)
   private String anoDeFundacao;
   @OneToMany
@@ -46,11 +47,11 @@ public class Artista {
     this.nome = nome;
   }
 
-  public String getGenero() {
+  public Generos getGenero() {
     return genero;
   }
 
-  public void setGenero(String genero) {
+  public void setGenero(Generos genero) {
     this.genero = genero;
   }
 
