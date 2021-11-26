@@ -62,4 +62,19 @@ public class Artista {
     this.anoDeFundacao = anoDeFundacao;
   }
 
+  public List<Album> getAlbuns() {
+    return albuns;
+  }
+
+  public void setAlbuns(List<Album> albuns) {
+    this.albuns = albuns;
+  }
+
+  public Gravadora getGravadora() {
+    return gravadora;
+  }
+
+  public void setGravadora(Gravadora gravadora) {
+    this.gravadora = gravadora;
+  }
 }
