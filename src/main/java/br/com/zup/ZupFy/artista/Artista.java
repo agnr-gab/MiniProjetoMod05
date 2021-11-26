@@ -1,7 +1,12 @@
 package br.com.zup.ZupFy.artista;
 
 
+import br.com.zup.ZupFy.album.Album;
+import br.com.zup.ZupFy.gravadora.Gravadora;
+import org.w3c.dom.stylesheets.LinkStyle;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "artistas")
@@ -16,6 +21,10 @@ public class Artista {
   private String genero;
   @Column(nullable = false)
   private String anoDeFundacao;
+  @OneToMany
+  private List<Album> albuns;
+  @OneToOne
+  private Gravadora gravadora;
 
   public Artista() {
 

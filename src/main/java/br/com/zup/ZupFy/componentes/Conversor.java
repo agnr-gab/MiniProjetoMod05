@@ -10,7 +10,7 @@ public class Conversor {
 
   @Bean
   public ModelMapper modelMapper (){
-    return modelMapper();
+    return new ModelMapper();
   }
 
 }
