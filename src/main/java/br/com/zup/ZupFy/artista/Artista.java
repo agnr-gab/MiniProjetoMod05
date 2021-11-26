@@ -1,16 +1,20 @@
 package br.com.zup.ZupFy.artista;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "artistas")
 public class Artista {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+  @Column(nullable = false)
   private String nome;
+  @Column(nullable = false)
   private String genero;
+  @Column(nullable = false)
   private String anoDeFundacao;
 
   public Artista() {
