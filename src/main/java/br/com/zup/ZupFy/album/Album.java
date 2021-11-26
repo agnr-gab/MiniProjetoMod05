@@ -1,5 +1,7 @@
 package br.com.zup.ZupFy.album;
 
+import br.com.zup.ZupFy.gravadora.Gravadora;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,8 @@ public class Album {
   private String nome;
   @Column(nullable = false)
   private String ano;
+  @ManyToOne
+  private Gravadora gravadora;
 
   public Album() {
 
@@ -32,5 +36,21 @@ public class Album {
 
   public void setAno(String ano) {
     this.ano = ano;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public Gravadora getGravadora() {
+    return gravadora;
+  }
+
+  public void setGravadora(Gravadora gravadora) {
+    this.gravadora = gravadora;
   }
 }

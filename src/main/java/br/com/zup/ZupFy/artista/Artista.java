@@ -78,4 +78,5 @@ public class Artista {
   public void setGravadora(Gravadora gravadora) {
     this.gravadora = gravadora;
   }
+
 }
