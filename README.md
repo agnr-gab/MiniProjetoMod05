@@ -13,14 +13,14 @@ Desenvolvimento de cadastro de artistas para plataforma musical Zupfy®, utiliza
 **Padrão CRUD**
 
  **- CREATE** 
-Através do método POST, o sistema permitirá cadastrar um novo artista. Considerando as regras de negócio nº 1 e 2. Criar uma DTO de Entrada.
+Através do método POST, o sistema permitirá cadastrar um novo artista. Considerando as regras de negócio nº 1. Criar uma DTO de Entrada.
 
  **- READ**
  Através do método GET, o sistema permitirá exibir todos os artistas e pesquisar os álbuns de um artista específico. Criar uma DTO de Saída.  
 
 **- UPDATE**
  Através do método PUT, o sistema permitirá atualizar a lista de álbuns de um artista específico.
-Considerando as regras de negócio nº 3. Criar uma DTO Resumo.
+Considerando as regras de negócio nº 2 e 3. Criar uma DTO Resumo.
  
  **- DELETE**
  Através do método DELETE, o sistema permitirá deletar um artista específico, usando o nome como parâmetro.
