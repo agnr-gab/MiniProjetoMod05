@@ -14,8 +14,8 @@ public class Gravadora {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private String nome;
-  @OneToMany
-  private List<Album> albuns;
+  /*@OneToMany
+  private List<Album> albuns;*/
 
   public Gravadora() {
 
@@ -37,12 +37,11 @@ public class Gravadora {
     this.nome = nome;
   }
 
-  public List<Album> getAlbuns() {
+  /*public List<Album> getAlbuns() {
     return albuns;
   }
 
   public void setAlbuns(List<Album> albuns) {
     this.albuns = albuns;
-  }
-
+  }*/
 }

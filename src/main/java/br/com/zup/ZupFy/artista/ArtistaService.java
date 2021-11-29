@@ -6,8 +6,6 @@ import br.com.zup.ZupFy.gravadora.GravadoraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class ArtistaService {
   private ArtistaRepository artistaRepository;
@@ -23,13 +21,17 @@ public class ArtistaService {
     this.albumRepository = albumRepository;
   }
 
-  public Artista cadastrarArtista (Artista artista) {
+  public Artista salvarArtista(Artista artista) {
     artistaRepository.save(artista);
     return artista;
   }
 
-  public Artista verificarArtista (Artista artista) {
-    Optional<Artista> nomeArtista = artistaRepository.findAllByNome(artista.getNome())
+  public Artista verificarArtista(Artista artista) {
+    if (artistaRepository.existsByNome(artista.getNome())) {
+      throw new RuntimeException();
+
+    }
+    return salvarArtista(artista);
   }
 
 }
