@@ -1,43 +1,19 @@
-package br.com.zup.ZupFy.artista;
-
+package br.com.zup.ZupFy.artista.dtos;
 
 import br.com.zup.ZupFy.album.Album;
 import br.com.zup.ZupFy.enums.Generos;
-import br.com.zup.ZupFy.gravadora.Gravadora;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "artistas")
-public class Artista {
+public class ArtistaEntradaDTO {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
-  @Column(nullable = false, unique = true)
   private String nome;
-  @Column(nullable = false)
-  @Enumerated(EnumType.STRING)
   private Generos genero;
-  @Column(nullable = false)
   private String anoDeFundacao;
-  @OneToMany(cascade = CascadeType.PERSIST)
   private List<Album> albuns;
-  /*@OneToOne
-  private Gravadora gravadora;*/
 
+  public ArtistaEntradaDTO() {
 
-  public Artista() {
-
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
   }
 
   public String getNome() {
@@ -72,11 +48,4 @@ public class Artista {
     this.albuns = albuns;
   }
 
-  /*public Gravadora getGravadora() {
-    return gravadora;
-  }
-
-  public void setGravadora(Gravadora gravadora) {
-    this.gravadora = gravadora;
-  }*/
 }

@@ -21,4 +21,17 @@ public class ArtistaService {
     this.albumRepository = albumRepository;
   }
 
+  public Artista salvarArtista(Artista artista) {
+    artistaRepository.save(artista);
+    return artista;
+  }
+
+  public Artista verificarArtista(Artista artista) {
+    if (artistaRepository.existsByNome(artista.getNome())) {
+      throw new RuntimeException();
+
+    }
+    return salvarArtista(artista);
+  }
+
 }
