@@ -59,4 +59,14 @@ public class ArtistaService {
         return album.get();
     }
 
+    public Album atualizarListaAlbum(Integer id, AlbumEntradaDTO albumEntradaDTO) {
+        Album albumNovo = buscarPorId(id);
+        albumNovo.setNome(albumEntradaDTO.getNome());
+        albumNovo.setAno(albumEntradaDTO.getAno());
+        albumNovo.setGravadora(albumEntradaDTO.getGravadora());
+        albumRepository.save(albumNovo);
+        return albumNovo;
+
+    }
+
 }
