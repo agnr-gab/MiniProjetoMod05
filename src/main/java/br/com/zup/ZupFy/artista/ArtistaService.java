@@ -41,4 +41,9 @@ public class ArtistaService {
     return listaDeArtistas;
   }
 
+  public List<Artista> buscarPorNome(String nome) {
+    return artistaRepository.findAllByNome(nome);
+
+  }
+
 }

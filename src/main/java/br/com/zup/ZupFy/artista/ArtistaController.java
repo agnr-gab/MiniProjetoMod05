@@ -2,6 +2,7 @@ package br.com.zup.ZupFy.artista;
 
 
 import br.com.zup.ZupFy.artista.dtos.ArtistaEntradaDTO;
+import br.com.zup.ZupFy.artista.dtos.ArtistaResumoDTO;
 import br.com.zup.ZupFy.artista.dtos.ArtistaSaidaDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,19 @@ public class ArtistaController {
       listaDeArtistas.add(artistaSaidaDTO);
     }
     return listaDeArtistas;
+  }
+
+  @GetMapping("/{nome}")
+  public List<ArtistaResumoDTO> buscarAlbunsPorNome(@PathVariable String nome) {
+    List<ArtistaResumoDTO> artistaResumoDTOS = new ArrayList<>();
+    List<Artista> artistas = artistaService.buscarPorNome(nome);
+    for (Artista referencia : artistas) {
+      ArtistaResumoDTO conversao = modelMapper.map(referencia, ArtistaResumoDTO.class);
+      artistaResumoDTOS.add(conversao);
+
+    }
+    return artistaResumoDTOS;
+
   }
 
 }
