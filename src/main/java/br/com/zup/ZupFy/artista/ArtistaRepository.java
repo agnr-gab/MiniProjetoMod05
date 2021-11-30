@@ -1,6 +1,7 @@
 package br.com.zup.ZupFy.artista;
 
 
+import br.com.zup.ZupFy.album.Album;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,11 @@ public interface ArtistaRepository extends CrudRepository<Artista, Integer> {
   boolean existsByNome (String nome);
 
   List<Artista> findAllByNome (String nome);
+
+
+
+
+
 
 
 
