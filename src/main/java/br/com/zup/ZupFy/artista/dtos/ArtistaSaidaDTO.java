@@ -2,12 +2,11 @@ package br.com.zup.ZupFy.artista.dtos;
 
 import br.com.zup.ZupFy.album.Album;
 
-import java.util.List;
 
 public class ArtistaSaidaDTO {
 
   private String nome;
-  private List<Album> albuns;
+
 
   public ArtistaSaidaDTO() {
 
@@ -21,11 +20,4 @@ public class ArtistaSaidaDTO {
     this.nome = nome;
   }
 
-  public List<Album> getAlbuns() {
-    return albuns;
-  }
-
-  public void setAlbuns(List<Album> albuns) {
-    this.albuns = albuns;
-  }
 }
