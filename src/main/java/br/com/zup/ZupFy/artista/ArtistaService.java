@@ -6,6 +6,8 @@ import br.com.zup.ZupFy.gravadora.GravadoraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ArtistaService {
   private ArtistaRepository artistaRepository;
@@ -32,6 +34,16 @@ public class ArtistaService {
 
     }
     return salvarArtista(artista);
+  }
+
+  public List<Artista> exibirLista() {
+    List<Artista> listaDeArtistas = (List<Artista>) artistaRepository.findAll();
+    return listaDeArtistas;
+  }
+
+  public List<Artista> buscarPorNome(String nome) {
+    return artistaRepository.findAllByNome(nome);
+
   }
 
 }
