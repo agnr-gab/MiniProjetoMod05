@@ -1,44 +1,49 @@
 # Regras de Negócio
 
- 1. Não é permitido cadastro de artistas com nome repetido.
- 2. Não é permitido cadastro de álbuns com nome repetido vinculado ao mesmo artista.
- 3. Ao incluir um novo álbum de um artista, a lista deve ser atualizada, não sobrescrita.
- 4.  O Sistema permite pesquisar todos os álbuns a partir do nome do artista.
+ - [x] Não é permitido cadastro de artistas com nome repetido.
+ - [x] Não é permitido cadastro de álbuns com nome repetido vinculado ao  mesmo artista.
+ - [x] Ao incluir um novo álbum de um artista, a lista deve ser
+       atualizada, não sobrescrita.
+ - [x] O Sistema permite pesquisar todos os álbuns a partir do id do
+       artista.
 
 # Tarefas
 
 **Padrão CRUD**
 
  **- CREATE** 
-Através do método POST, o sistema permitirá cadastrar um novo artista. Considerando as regras de negócio nº 1 e 2. Criar uma DTO de Entrada.
+Através do método POST, o sistema permitirá cadastrar um novo artista. Considerando as regras de negócio nº 1 e 2. 
 
  **- READ**
- Através do método GET, o sistema permitirá exibir todos os artistas e pesquisar os álbuns de um artista específico. Criar uma DTO de Saída.  
+ Através do método GET, o sistema permitirá exibir todos os artistas e também pesquisar os álbuns de um artista específico. 
 
 **- UPDATE**
- Através do método PUT, o sistema permitirá atualizar a lista de álbuns de um artista específico.
-Considerando as regras de negócio nº 3. Criar uma DTO Resumo.
+ Através do método PUT, o sistema permitirá atualizar a lista de álbuns de um artista específico. 
  
  **- DELETE**
- Através do método DELETE, o sistema permitirá deletar um artista específico, usando o nome como parâmetro.
+ Através do método DELETE, o sistema permitirá deletar um artista específico, usando o id como parâmetro.
 
 # Requisições:
 
-### POST /artistas
+### POST 
 
-    {
-        "nome": "Ana Carolina",
-        "genero": "MPB",
-        "anoDeFundacao": "1995",
-        "albuns": [
-            {
-                "nome": "Perfil",
-                "ano": "2003",
-                "gravadora": {
-                    "nome": "Xablau Records"
+Endpoint: /artistas 
+Response Status 201
+
+      {
+            "nome": "Ana Carolina",
+            "genero": "MPB",
+            "anoDeFundacao": "1995",
+            "albuns": [
+                {
+                    "nome": "Perfil",
+                    "ano": "2003",
+                    "gravadora": {
+                        "nome": "Xablau Records"
+                    }
                 }
+            ] 
             }
-        ] }
 
 ## Response
 
@@ -74,7 +79,9 @@ Considerando as regras de negócio nº 3. Criar uma DTO Resumo.
     
     }
 
-## GET/artistas
+## GET
+Endpoint: /artistas 
+
 
       {  
      "nome": "Aerosmith"  
@@ -109,7 +116,8 @@ Considerando as regras de negócio nº 3. Criar uma DTO Resumo.
       "nome": "Ana Carolina" 
       }
 
-## GET/artistas/"nomeDaBanda"
+## GET
+Endpoint: /artistas/idArtista
 
     [
         {
@@ -128,5 +136,22 @@ Considerando as regras de negócio nº 3. Criar uma DTO Resumo.
         }
     ]
 
+## PUT
+Endpoint: /albuns/idArtista
+
+    { 
+    "id": 3, 
+    "nome": "Formation", 
+    "ano": "2016", 
+    "gravadora": 
+	    { 
+	    "id": 3, 
+	    "nome": "Def jam Records" 
+		    } 
+	    }
+
+## DELETE
+Endpoint: /artistas/idArtista
+Response Status 204
 
 
