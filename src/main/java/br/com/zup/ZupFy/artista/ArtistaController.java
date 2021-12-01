@@ -58,12 +58,6 @@ public class ArtistaController {
 
   }
 
-  @PutMapping("/{id}")
-  public AlbumEntradaDTO atualizarListaAlbuns(@PathVariable Integer id,
-                                              @RequestBody AlbumEntradaDTO albumEntradaDTO) {
-    return modelMapper.map(artistaService.atualizarListaAlbum(id, albumEntradaDTO), AlbumEntradaDTO.class);
-  }
-
   @DeleteMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void deletarConta(@PathVariable int id) {

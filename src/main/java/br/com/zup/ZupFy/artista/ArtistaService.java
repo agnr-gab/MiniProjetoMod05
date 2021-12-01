@@ -50,25 +50,6 @@ public class ArtistaService {
 
   }
 
-  public Album buscarPorId(Integer id) {
-    Optional<Album> album = albumRepository.findById(id);
-    //TODO: fazer a exceção
-    if (album.isPresent()) {
-
-    }
-    return album.get();
-  }
-
-  public Album atualizarListaAlbum(Integer id, AlbumEntradaDTO albumEntradaDTO) {
-    Album albumNovo = buscarPorId(id);
-    albumNovo.setNome(albumEntradaDTO.getNome());
-    albumNovo.setAno(albumEntradaDTO.getAno());
-    albumNovo.setGravadora(albumEntradaDTO.getGravadora());
-    albumRepository.save(albumNovo);
-    return albumNovo;
-
-  }
-
   public void deletarArtista(int id) {
     if (artistaRepository.existsById(id)) {
       artistaRepository.deleteById(id);
