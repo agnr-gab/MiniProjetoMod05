@@ -10,24 +10,28 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/albuns")
 public class AlbumController {
 
-  @Autowired
-  private AlbumService albumService;
+    private AlbumService albumService;
+    private ModelMapper modelMapper;
 
-  @Autowired
-  private ModelMapper modelMapper;
+    @Autowired
+    public AlbumController(AlbumService albumService, ModelMapper modelMapper) {
+        this.albumService = albumService;
+        this.modelMapper = modelMapper;
+    }
 
-  @PutMapping("/{id}")
-  public AlbumEntradaDTO atualizarListaAlbuns(@PathVariable Integer id,
-                                              @RequestBody AlbumEntradaDTO albumEntradaDTO) {
-    return modelMapper.map(albumService.atualizarListaAlbum(id, albumEntradaDTO), AlbumEntradaDTO.class);
-  }
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public AlbumEntradaDTO cadastrarAlbum(@RequestBody AlbumEntradaDTO albumEntradaDTO,
+                                          @RequestParam Integer idArtista) {
+        Album album = modelMapper.map(albumEntradaDTO, Album.class);
+        album = albumService.cadastrarAlbum(album, idArtista);
+        return modelMapper.map(album, AlbumEntradaDTO.class);
+    }
 
-  @PostMapping
-  @ResponseStatus(HttpStatus.CREATED)
-  public AlbumEntradaDTO cadastrarAlbum(@RequestBody AlbumEntradaDTO albumEntradaDTO, @RequestParam int idArtista){
-    Album album = modelMapper.map(albumEntradaDTO, Album.class);
-    album = albumService.cadastrarAlbum(album, idArtista);
-    return modelMapper.map(album, AlbumEntradaDTO.class);
-  }
+    @PutMapping("/{id}")
+    public AlbumEntradaDTO atualizarAlbuns(@PathVariable Integer id,
+                                           @RequestBody AlbumEntradaDTO albumEntradaDTO) {
+        return modelMapper.map(albumService.atualizarAlbum(id, albumEntradaDTO), AlbumEntradaDTO.class);
+    }
 
 }
