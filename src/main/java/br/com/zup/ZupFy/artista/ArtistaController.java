@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/artistas")
@@ -31,7 +32,7 @@ public class ArtistaController {
   @ResponseStatus(HttpStatus.CREATED)
   public ArtistaEntradaDTO cadastrarArtista(@RequestBody ArtistaEntradaDTO artistaEntradaDTO) {
     Artista artista = modelMapper.map(artistaEntradaDTO, Artista.class);
-    return modelMapper.map(artistaService.verificarArtista(artista), ArtistaEntradaDTO.class);
+    return modelMapper.map(artistaService.cadastrarArtista(artista), ArtistaEntradaDTO.class);
 
   }
 
@@ -45,19 +46,13 @@ public class ArtistaController {
     return listaDeArtistas;
   }
 
-  @GetMapping("/{nome}")
-  public List<ArtistaResumoDTO> buscarAlbunsPorNome(@PathVariable String nome) {
-    List<ArtistaResumoDTO> artistaResumoDTOS = new ArrayList<>();
-    List<Artista> artistas = artistaService.buscarPorNome(nome);
-    for (Artista referencia : artistas) {
-      ArtistaResumoDTO conversao = modelMapper.map(referencia, ArtistaResumoDTO.class);
-      artistaResumoDTOS.add(conversao);
+  @GetMapping("/{id}")
+  public ArtistaResumoDTO pesquisarAlbunsPorArtista(@PathVariable Integer id) {
+    Artista artista = artistaService.buscarPorId(id);
+    ArtistaResumoDTO conversao = modelMapper.map(artista, ArtistaResumoDTO.class);
+    return conversao;
 
-    }
-    return artistaResumoDTOS;
-
-  }
-
+}
   @DeleteMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void deletarConta(@PathVariable int id) {

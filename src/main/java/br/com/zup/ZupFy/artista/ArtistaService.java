@@ -4,6 +4,7 @@ package br.com.zup.ZupFy.artista;
 import br.com.zup.ZupFy.album.Album;
 import br.com.zup.ZupFy.album.AlbumRepository;
 import br.com.zup.ZupFy.album.dtos.AlbumEntradaDTO;
+import br.com.zup.ZupFy.gravadora.Gravadora;
 import br.com.zup.ZupFy.gravadora.GravadoraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,17 +28,14 @@ public class ArtistaService {
     this.albumRepository = albumRepository;
   }
 
-  public Artista salvarArtista(Artista artista) {
-    artistaRepository.save(artista);
-    return artista;
-  }
-
-  public Artista verificarArtista(Artista artista) {
-    if (artistaRepository.existsByNome(artista.getNome())) {
+  public Artista cadastrarArtista(Artista artista) {
+    Optional<Artista> optionalArtista = artistaRepository.findById(artista.getId());
+    if (optionalArtista.isPresent()) {
       throw new RuntimeException();
 
     }
-    return salvarArtista(artista);
+
+     return artistaRepository.save(artista);
   }
 
   public List<Artista> exibirLista() {
@@ -45,9 +43,13 @@ public class ArtistaService {
     return listaDeArtistas;
   }
 
-  public List<Artista> buscarPorNome(String nome) {
-    return artistaRepository.findAllByNome(nome);
+  public Artista buscarPorId(Integer id) {
+    Optional<Artista> artista = artistaRepository.findById(id);
+    //TODO: fazer a exceção
+    if (artista.isPresent()) {
 
+    }
+    return artista.get();
   }
 
   public void deletarArtista(int id) {

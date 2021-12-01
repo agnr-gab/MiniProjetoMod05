@@ -14,11 +14,9 @@ public class Album {
   private int id;
   @Column(nullable = false, unique = true)
   private String nome;
-  @Column(nullable = false)
+  @Column(nullable = false, name = "ano")
   private String ano;
-  @ManyToOne
-  private Artista artista;
-  @ManyToOne//Removido para garantir a independencia da gravadora (cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
   private Gravadora gravadora;
 
   public Album() {
@@ -57,11 +55,4 @@ public class Album {
     this.gravadora = gravadora;
   }
 
-  public Artista getArtista() {
-    return artista;
-  }
-
-  public void setArtista(Artista artista) {
-    this.artista = artista;
-  }
 }
