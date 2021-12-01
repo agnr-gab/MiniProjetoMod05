@@ -14,59 +14,59 @@ import java.util.Optional;
 
 @Service
 public class ArtistaService {
-    private ArtistaRepository artistaRepository;
-    private GravadoraRepository gravadoraRepository;
-    private AlbumRepository albumRepository;
+  private ArtistaRepository artistaRepository;
+  private GravadoraRepository gravadoraRepository;
+  private AlbumRepository albumRepository;
 
 
-    @Autowired
-    public ArtistaService(ArtistaRepository artistaRepository, GravadoraRepository gravadoraRepository,
-                          AlbumRepository albumRepository) {
-        this.artistaRepository = artistaRepository;
-        this.gravadoraRepository = gravadoraRepository;
-        this.albumRepository = albumRepository;
-    }
+  @Autowired
+  public ArtistaService(ArtistaRepository artistaRepository, GravadoraRepository gravadoraRepository,
+                        AlbumRepository albumRepository) {
+    this.artistaRepository = artistaRepository;
+    this.gravadoraRepository = gravadoraRepository;
+    this.albumRepository = albumRepository;
+  }
 
-    public Artista salvarArtista(Artista artista) {
-        artistaRepository.save(artista);
-        return artista;
-    }
+  public Artista salvarArtista(Artista artista) {
+    artistaRepository.save(artista);
+    return artista;
+  }
 
-    public Artista verificarArtista(Artista artista) {
-        if (artistaRepository.existsByNome(artista.getNome())) {
-            throw new RuntimeException();
-
-        }
-        return salvarArtista(artista);
-    }
-
-    public List<Artista> exibirLista() {
-        List<Artista> listaDeArtistas = (List<Artista>) artistaRepository.findAll();
-        return listaDeArtistas;
-    }
-
-    public List<Artista> buscarPorNome(String nome) {
-        return artistaRepository.findAllByNome(nome);
+  public Artista verificarArtista(Artista artista) {
+    if (artistaRepository.existsByNome(artista.getNome())) {
+      throw new RuntimeException();
 
     }
+    return salvarArtista(artista);
+  }
 
-    public Album buscarPorId(Integer id) {
-        Optional<Album> album = albumRepository.findById(id);
-        //TODO: fazer a exceção
-        if (album.isPresent()) {
+  public List<Artista> exibirLista() {
+    List<Artista> listaDeArtistas = (List<Artista>) artistaRepository.findAll();
+    return listaDeArtistas;
+  }
 
-        }
-        return album.get();
+  public List<Artista> buscarPorNome(String nome) {
+    return artistaRepository.findAllByNome(nome);
+
+  }
+
+  public Album buscarPorId(Integer id) {
+    Optional<Album> album = albumRepository.findById(id);
+    //TODO: fazer a exceção
+    if (album.isPresent()) {
+
     }
+    return album.get();
+  }
 
-    public Album atualizarListaAlbum(Integer id, AlbumEntradaDTO albumEntradaDTO) {
-        Album albumNovo = buscarPorId(id);
-        albumNovo.setNome(albumEntradaDTO.getNome());
-        albumNovo.setAno(albumEntradaDTO.getAno());
-        albumNovo.setGravadora(albumEntradaDTO.getGravadora());
-        albumRepository.save(albumNovo);
-        return albumNovo;
+  public Album atualizarListaAlbum(Integer id, AlbumEntradaDTO albumEntradaDTO) {
+    Album albumNovo = buscarPorId(id);
+    albumNovo.setNome(albumEntradaDTO.getNome());
+    albumNovo.setAno(albumEntradaDTO.getAno());
+    albumNovo.setGravadora(albumEntradaDTO.getGravadora());
+    albumRepository.save(albumNovo);
+    return albumNovo;
 
-    }
+  }
 
 }

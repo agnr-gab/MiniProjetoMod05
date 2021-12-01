@@ -27,4 +27,5 @@ public class ArtistaResumoDTO {
   public void setAlbuns(List<Album> albuns) {
     this.albuns = albuns;
   }
+
 }

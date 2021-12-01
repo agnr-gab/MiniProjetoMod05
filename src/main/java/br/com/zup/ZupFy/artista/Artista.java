@@ -24,9 +24,6 @@ public class Artista {
   private String anoDeFundacao;
   @OneToMany(cascade = CascadeType.PERSIST)
   private List<Album> albuns;
-  /*@OneToOne
-  private Gravadora gravadora;*/
-
 
   public Artista() {
 
@@ -72,11 +69,4 @@ public class Artista {
     this.albuns = albuns;
   }
 
-  /*public Gravadora getGravadora() {
-    return gravadora;
-  }
-
-  public void setGravadora(Gravadora gravadora) {
-    this.gravadora = gravadora;
-  }*/
 }

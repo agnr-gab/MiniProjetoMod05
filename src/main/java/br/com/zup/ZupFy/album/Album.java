@@ -53,4 +53,5 @@ public class Album {
   public void setGravadora(Gravadora gravadora) {
     this.gravadora = gravadora;
   }
+
 }

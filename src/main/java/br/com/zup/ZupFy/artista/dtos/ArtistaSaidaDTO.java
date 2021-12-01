@@ -1,7 +1,5 @@
 package br.com.zup.ZupFy.artista.dtos;
 
-import br.com.zup.ZupFy.album.Album;
-
 
 public class ArtistaSaidaDTO {
 

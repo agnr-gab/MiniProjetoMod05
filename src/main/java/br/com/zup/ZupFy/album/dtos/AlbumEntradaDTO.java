@@ -43,5 +43,6 @@ public class AlbumEntradaDTO {
     public void setGravadora(Gravadora gravadora) {
         this.gravadora = gravadora;
     }
+
 }
 

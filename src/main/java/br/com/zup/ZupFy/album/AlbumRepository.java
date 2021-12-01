@@ -8,8 +8,4 @@ import java.util.List;
 @Repository
 public interface AlbumRepository extends CrudRepository<Album, Integer> {
 
-    boolean existsByNome(String nome);
-
-    Album findByNome(String nome);
-
 }
