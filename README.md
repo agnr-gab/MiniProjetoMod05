@@ -1,3 +1,5 @@
+# UML - Linguagem Unificada de Modelagem - Diagrama
+![enter image description here](https://i.ibb.co/N2wHgJt/ZupFy.png)
 # Regras de Negócio
 
  - [x] Não é permitido cadastro de artistas com nome repetido.
@@ -153,5 +155,3 @@ Endpoint: /albuns/idArtista
 ## DELETE
 Endpoint: /artistas/idArtista
 Response Status 204
-
-
