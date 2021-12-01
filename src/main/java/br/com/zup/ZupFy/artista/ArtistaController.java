@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,4 +64,11 @@ public class ArtistaController {
     return modelMapper.map(artistaService.atualizarListaAlbum(id, albumEntradaDTO), AlbumEntradaDTO.class);
   }
 
+  @DeleteMapping("/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void deletarConta(@PathVariable int id) {
+    artistaService.deletarArtista(id);
+  }
+
 }
+

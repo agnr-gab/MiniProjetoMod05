@@ -69,4 +69,13 @@ public class ArtistaService {
 
   }
 
+  public void deletarArtista(int id) {
+    if (artistaRepository.existsById(id)) {
+      artistaRepository.deleteById(id);
+    } else {
+      throw new RuntimeException();
+    }
+
+  }
+
 }
