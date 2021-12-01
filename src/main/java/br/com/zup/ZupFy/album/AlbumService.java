@@ -35,7 +35,7 @@ public class AlbumService {
     Album albumNovo = buscarPorId(id);
     albumNovo.setNome(albumEntradaDTO.getNome());
     albumNovo.setAno(albumEntradaDTO.getAno());
-    Gravadora gravadora = gravadoraRepository.findById(albumEntradaDTO.getGravadora().getId()).get();
+    Gravadora gravadora = gravadoraRepository.findById(albumEntradaDTO.getGravadoraEntradaDTO().getId()).get();
     albumNovo.setGravadora(gravadora);
     albumRepository.save(albumNovo);
     return albumNovo;
