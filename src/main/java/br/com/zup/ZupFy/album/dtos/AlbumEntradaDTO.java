@@ -1,13 +1,14 @@
 package br.com.zup.ZupFy.album.dtos;
 
 import br.com.zup.ZupFy.gravadora.Gravadora;
+import br.com.zup.ZupFy.gravadora.dtos.GravadoraEntradaDTO;
 
 public class AlbumEntradaDTO {
 
     private int id;
     private String nome;
     private String ano;
-    private Gravadora gravadora;
+    private GravadoraEntradaDTO gravadoraEntradaDTO;
 
     public AlbumEntradaDTO() {
     }
@@ -36,12 +37,12 @@ public class AlbumEntradaDTO {
         this.ano = ano;
     }
 
-    public Gravadora getGravadora() {
-        return gravadora;
+    public GravadoraEntradaDTO getGravadora() {
+        return gravadoraEntradaDTO;
     }
 
-    public void setGravadora(Gravadora gravadora) {
-        this.gravadora = gravadora;
+    public void setGravadora(GravadoraEntradaDTO gravadora) {
+        this.gravadoraEntradaDTO = gravadora;
     }
 
 }
