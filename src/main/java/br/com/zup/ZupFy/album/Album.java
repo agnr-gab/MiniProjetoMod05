@@ -15,7 +15,7 @@ public class Album {
   private String nome;
   @Column(nullable = false)
   private String ano;
-  @ManyToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
   private Gravadora gravadora;
 
   public Album() {

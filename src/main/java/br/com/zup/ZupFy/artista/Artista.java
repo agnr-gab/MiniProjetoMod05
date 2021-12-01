@@ -22,7 +22,7 @@ public class Artista {
   private Generos genero;
   @Column(nullable = false)
   private String anoDeFundacao;
-  @OneToMany(cascade = CascadeType.PERSIST)
+  @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
   private List<Album> albuns;
 
   public Artista() {
