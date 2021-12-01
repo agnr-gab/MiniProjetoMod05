@@ -32,4 +32,16 @@ public class AlbumService {
     return albumNovo;
   }
 
+  public Album salvarAlbum (Album album){
+    albumRepository.save(album);
+    return album;
+  }
+
+  public Album verificarAlbum(Album album){
+    if (albumRepository.existsById(album.getId())){
+      throw new RuntimeException();
+    }
+    return salvarAlbum(album);
+  }
+
 }

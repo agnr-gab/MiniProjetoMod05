@@ -3,6 +3,7 @@ package br.com.zup.ZupFy.album;
 import br.com.zup.ZupFy.album.dtos.AlbumEntradaDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,6 +20,13 @@ public class AlbumController {
   public AlbumEntradaDTO atualizarListaAlbuns(@PathVariable Integer id,
                                               @RequestBody AlbumEntradaDTO albumEntradaDTO) {
     return modelMapper.map(albumService.atualizarListaAlbum(id, albumEntradaDTO), AlbumEntradaDTO.class);
+  }
+
+  @PostMapping
+  @ResponseStatus(HttpStatus.CREATED)
+  public AlbumEntradaDTO cadastrarAlbum(@RequestBody AlbumEntradaDTO albumEntradaDTO){
+    Album album = modelMapper.map(albumEntradaDTO, Album.class);
+    return modelMapper.map(albumService.verificarAlbum(album),AlbumEntradaDTO.class);
   }
 
 }
