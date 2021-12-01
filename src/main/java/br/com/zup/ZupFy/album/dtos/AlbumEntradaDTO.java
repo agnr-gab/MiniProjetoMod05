@@ -7,7 +7,7 @@ public class AlbumEntradaDTO {
     private int id;
     private String nome;
     private String ano;
-    private Gravadora gravadora; //usar uma DTO de entrada somente com o ID
+    private Gravadora gravadora;
 
     public AlbumEntradaDTO() {
     }
