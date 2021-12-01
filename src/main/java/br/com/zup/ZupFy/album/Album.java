@@ -1,5 +1,6 @@
 package br.com.zup.ZupFy.album;
 
+import br.com.zup.ZupFy.artista.Artista;
 import br.com.zup.ZupFy.gravadora.Gravadora;
 
 import javax.persistence.*;
@@ -15,7 +16,9 @@ public class Album {
   private String nome;
   @Column(nullable = false)
   private String ano;
-  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+  @ManyToOne
+  private Artista artista;
+  @ManyToOne//Removido para garantir a independencia da gravadora (cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
   private Gravadora gravadora;
 
   public Album() {
@@ -54,4 +57,11 @@ public class Album {
     this.gravadora = gravadora;
   }
 
+  public Artista getArtista() {
+    return artista;
+  }
+
+  public void setArtista(Artista artista) {
+    this.artista = artista;
+  }
 }
