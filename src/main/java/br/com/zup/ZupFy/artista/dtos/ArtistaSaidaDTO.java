@@ -1,21 +1,15 @@
 package br.com.zup.ZupFy.artista.dtos;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 
 public class ArtistaSaidaDTO {
 
-  private String nome;
-
-
-  public ArtistaSaidaDTO() {
-
-  }
-
-  public String getNome() {
-    return nome;
-  }
-
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
+    private String nome;
 
 }

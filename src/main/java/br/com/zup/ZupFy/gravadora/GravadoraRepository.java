@@ -8,6 +8,6 @@ import java.util.Optional;
 @Repository
 public interface GravadoraRepository extends CrudRepository<Gravadora, Integer> {
 
-  Optional<Gravadora> findByNome(String nome);
+    Optional<Gravadora> findByNome(String nome);
 
 }
