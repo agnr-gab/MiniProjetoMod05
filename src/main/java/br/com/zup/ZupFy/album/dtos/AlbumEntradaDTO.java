@@ -22,7 +22,7 @@ public class AlbumEntradaDTO {
     @NotBlank(message = "{validacao.ano.not-blank}")
     @Min(value = 4, message = "{validacao.ano.min}")
     private String ano;
-    private GravadoraEntradaDTO gravadoraEntradaDTO;
+    private GravadoraEntradaDTO gravadora;
 
 }
 
