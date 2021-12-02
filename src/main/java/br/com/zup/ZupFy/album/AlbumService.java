@@ -33,19 +33,25 @@ public class AlbumService {
     throw new IdNaoEncontradoException("Id não encontrado");
   }
 
+  public Gravadora buscarGravadoraPorId(Integer id) {
+    Optional<Gravadora> album = gravadoraRepository.findById(id);
+    if (album.isPresent()) {
+      return album.get();
+    }
+    throw new IdNaoEncontradoException("Id não encontrado");
+  }
+
+
   public Album atualizarAlbum(Integer id, AlbumEntradaDTO albumEntradaDTO) {
     Album albumNovo = buscarAlbumPorId(id);
     albumNovo.setNome(albumEntradaDTO.getNome());
     albumNovo.setAno(albumEntradaDTO.getAno());
-    Optional<Gravadora> optionalGravadora = gravadoraRepository.findById(albumEntradaDTO.getGravadora().getId());
-    if (optionalGravadora.isPresent()) {
-      Gravadora gravadora = optionalGravadora.get();
-      albumNovo.setGravadora(gravadora);
-      albumRepository.save(albumNovo);
-      return albumNovo;
 
-    }
-    throw new RuntimeException();
+    Gravadora gravadora = buscarGravadoraPorId(albumEntradaDTO.getGravadora().getId());
+    albumNovo.setGravadora(gravadora);
+    albumRepository.save(albumNovo);
+    return albumNovo;
+
   }
 
 
@@ -58,16 +64,20 @@ public class AlbumService {
     Optional<Artista> optionalArtista = artistaRepository.findById(idArtista);
     Optional<Gravadora> optionalGravadora = gravadoraRepository.findByNome(album.getGravadora().getNome());
 
-    if (optionalArtista.isEmpty() || optionalGravadora.isEmpty()) {
+    if (optionalArtista.isEmpty()) {
       throw new IdNaoEncontradoException("Id não encontrado");
     }
 
+    if (optionalGravadora.isPresent()) {
+      Gravadora gravadora = optionalGravadora.get();
+      album.setGravadora(gravadora);
+
+    }
+
     Artista artista = optionalArtista.get();
-    Gravadora gravadora = optionalGravadora.get();
-    album.setGravadora(gravadora);
     artista.getAlbuns().add(salvarAlbum(album));
     artistaRepository.save(artista);
     return album;
-
   }
+
 }
