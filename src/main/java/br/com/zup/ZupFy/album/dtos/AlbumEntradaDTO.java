@@ -15,20 +15,13 @@ import javax.validation.constraints.Size;
 
 public class AlbumEntradaDTO {
 
-  private int id;
-  @NotBlank(message = "{validacao.nome.not-blank}")
-  @Size(min = 1, max = 255, message = "{validacao.nome.size}")
-  private String nome;
-  @NotBlank(message = "{validacao.ano.not-blank}")
-  @Min(value = 4, message = "{validacao.ano.min}")
-  private String ano;
-  private GravadoraEntradaDTO gravadora;
-
-}
-
-
-
-
-
+    private int id;
+    @NotBlank(message = "Campo não pode estar em branco")
+    @Size(min = 1, message = "O Campo dever ter pelo menos 1 caractere")
+    private String nome;
+    @NotBlank(message = "Campo não pode estar em branco")
+    @Min(value = 4, message = "O Campo dever ter pelo menos 4 caracteres")
+    private String ano;
+    private GravadoraEntradaDTO gravadora;
 
 }
