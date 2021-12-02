@@ -24,7 +24,7 @@ public class ControllerAdvice {
 
     @ExceptionHandler(CadastroExistenteException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public MensagemDeErro cadastroExistenteException (CadastroExistenteException excecao) {
+    public MensagemDeErro cadastroExistenteException(CadastroExistenteException excecao) {
         return new MensagemDeErro(excecao.getLocalizedMessage());
     }
 
@@ -45,6 +45,4 @@ public class ControllerAdvice {
         return new MensagemDeErro(excecao.getLocalizedMessage());
     }
 
-
 }
-
