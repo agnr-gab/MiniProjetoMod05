@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/albuns")
 public class AlbumController {
@@ -21,7 +23,7 @@ public class AlbumController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AlbumEntradaDTO cadastrarAlbum(@RequestBody AlbumEntradaDTO albumEntradaDTO,
+    public AlbumEntradaDTO cadastrarAlbum(@RequestBody @Valid AlbumEntradaDTO albumEntradaDTO,
                                           @RequestParam Integer idArtista) {
         Album album = modelMapper.map(albumEntradaDTO, Album.class);
         album = albumService.cadastrarAlbum(album, idArtista);
@@ -30,7 +32,7 @@ public class AlbumController {
 
     @PutMapping("/{id}")
     public AlbumEntradaDTO atualizarAlbuns(@PathVariable Integer id,
-                                           @RequestBody AlbumEntradaDTO albumEntradaDTO) {
+                                           @RequestBody @Valid AlbumEntradaDTO albumEntradaDTO) {
         return modelMapper.map(albumService.atualizarAlbum(id, albumEntradaDTO), AlbumEntradaDTO.class);
     }
 

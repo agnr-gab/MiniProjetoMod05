@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class ArtistaController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public ArtistaEntradaDTO cadastrarArtista(@RequestBody ArtistaEntradaDTO artistaEntradaDTO) {
+  public ArtistaEntradaDTO cadastrarArtista(@RequestBody @Valid ArtistaEntradaDTO artistaEntradaDTO) {
     Artista artista = modelMapper.map(artistaEntradaDTO, Artista.class);
     return modelMapper.map(artistaService.cadastrarArtista(artista), ArtistaEntradaDTO.class);
 

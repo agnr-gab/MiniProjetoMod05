@@ -33,7 +33,7 @@ public class ArtistaService {
     if (optionalArtista.isPresent()) {
       throw new CadastroExistenteException("Cadastro já existente");
     }
-// refatorar em um método a parte
+    // refatorar em um método a parte
     List<Album> albuns = artista.getAlbuns();
     for (Album album : albuns) {
       Optional<Gravadora> optionalGravadora = gravadoraRepository.findByNome(album.getGravadora().getNome());
