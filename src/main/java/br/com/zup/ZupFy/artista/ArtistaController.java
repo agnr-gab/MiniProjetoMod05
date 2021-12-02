@@ -4,6 +4,8 @@ import br.com.zup.ZupFy.artista.dtos.ArtistaEntradaDTO;
 import br.com.zup.ZupFy.artista.dtos.ArtistaResumoDTO;
 import br.com.zup.ZupFy.artista.dtos.ArtistaSaidaDTO;
 import br.com.zup.ZupFy.enums.Genero;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/artistas")
+@Api(value = "Gerenciador de contas")
+@CrossOrigin(origins = "*")
 public class ArtistaController {
 
   private ArtistaService artistaService;
@@ -29,6 +33,7 @@ public class ArtistaController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
+  @ApiOperation(value = "Método que permite cadastrar artistas")
   public ArtistaEntradaDTO cadastrarArtista(@RequestBody @Valid ArtistaEntradaDTO artistaEntradaDTO) {
     Artista artista = modelMapper.map(artistaEntradaDTO, Artista.class);
     return modelMapper.map(artistaService.cadastrarArtista(artista), ArtistaEntradaDTO.class);
@@ -36,6 +41,7 @@ public class ArtistaController {
   }
 
   @GetMapping
+  @ApiOperation(value = "Método que permite pesquisar lista de artistas passando parâmetros ou não")
   public List<ArtistaSaidaDTO> exibirArtistas(@RequestParam(required = false) Genero genero,
                                               @RequestParam (required = false) String anoDeFundacao) {
     List<ArtistaSaidaDTO> listaDeArtistas = new ArrayList<>();
@@ -47,6 +53,7 @@ public class ArtistaController {
   }
 
   @GetMapping("/{id}")
+  @ApiOperation(value = "Método que permite pesquisar álbuns de um atista específico")
   public ArtistaResumoDTO pesquisarAlbunsPorIdArtista(@PathVariable Integer id) {
     Artista artista = artistaService.buscarPorId(id);
     ArtistaResumoDTO conversao = modelMapper.map(artista, ArtistaResumoDTO.class);
@@ -55,6 +62,7 @@ public class ArtistaController {
   }
 
   @DeleteMapping("/{id}")
+  @ApiOperation(value = "Método que permite deletar um artista a partir de seu id")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void deletarArtista(@PathVariable Integer id) {
     artistaService.deletarArtista(id);
