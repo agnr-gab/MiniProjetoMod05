@@ -3,6 +3,7 @@ package br.com.zup.ZupFy.album;
 import br.com.zup.ZupFy.album.dtos.AlbumEntradaDTO;
 import br.com.zup.ZupFy.artista.Artista;
 import br.com.zup.ZupFy.artista.ArtistaRepository;
+import br.com.zup.ZupFy.exceptions.IdNaoEncontradoException;
 import br.com.zup.ZupFy.gravadora.Gravadora;
 import br.com.zup.ZupFy.gravadora.GravadoraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,10 @@ public class AlbumService {
 
     public Album buscarAlbumPorId(Integer id) {
         Optional<Album> album = albumRepository.findById(id);
-        //TODO: fazer a exceção
         if (album.isPresent()) {
-
+            return album.get();
         }
-        return album.get();
+        throw new IdNaoEncontradoException("Id não encontrado");
     }
 
     public Album atualizarAlbum(Integer id, AlbumEntradaDTO albumEntradaDTO) {
@@ -48,12 +48,12 @@ public class AlbumService {
         return album;
     }
 
-    public Album cadastrarAlbum(Album album, int idArtista) {
+    public Album cadastrarAlbum(Album album, Integer idArtista) {
         Optional<Artista> optionalArtista = artistaRepository.findById(idArtista);
         Optional<Gravadora> optionalGravadora = gravadoraRepository.findByNome(album.getGravadora().getNome());
 
         if (optionalArtista.isEmpty() || optionalGravadora.isEmpty()) {
-            throw new RuntimeException();
+            throw new IdNaoEncontradoException("Id não encontrado");
         }
 
         Artista artista = optionalArtista.get();
