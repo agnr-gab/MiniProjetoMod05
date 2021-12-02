@@ -1,7 +1,7 @@
 package br.com.zup.ZupFy.artista;
 
 import br.com.zup.ZupFy.album.Album;
-import br.com.zup.ZupFy.enums.Generos;
+import br.com.zup.ZupFy.enums.Genero;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +24,7 @@ public class Artista {
     private String nome;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Generos genero;
+    private Genero genero;
     @Column(nullable = false)
     private String anoDeFundacao;
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
