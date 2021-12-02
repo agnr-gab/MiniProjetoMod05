@@ -55,7 +55,7 @@ public class ArtistaController {
 
   @DeleteMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void deletarArtista(@PathVariable int id) {
+  public void deletarArtista(@PathVariable Integer id) {
     artistaService.deletarArtista(id);
   }
 
