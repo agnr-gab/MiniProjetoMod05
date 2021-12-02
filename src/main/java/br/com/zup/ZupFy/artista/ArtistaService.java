@@ -57,9 +57,11 @@ public class ArtistaService {
 
   }
 
-  public List<Artista> aplicarFiltro(Genero genero) {
+  public List<Artista> aplicarFiltro(Genero genero, String anoDeFundacao) {
     if (genero != null) {
       return artistaRepository.findAllByGenero(genero);
+    } else if (anoDeFundacao != null) {
+      return artistaRepository.findAllByAnoDeFundacao(anoDeFundacao);
     }
     return exibirListaArtistas();
   }

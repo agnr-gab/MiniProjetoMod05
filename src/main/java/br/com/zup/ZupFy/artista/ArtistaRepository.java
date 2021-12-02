@@ -11,4 +11,6 @@ public interface ArtistaRepository extends CrudRepository<Artista, Integer> {
 
     List<Artista> findAllByGenero (Genero genero);
 
+    List<Artista> findAllByAnoDeFundacao (String anoDeFundacao);
+
 }

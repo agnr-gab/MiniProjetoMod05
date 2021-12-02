@@ -35,9 +35,10 @@ public class ArtistaController {
   }
 
   @GetMapping
-  public List<ArtistaSaidaDTO> exibirArtistas(@RequestParam(required = false) Genero genero) {
+  public List<ArtistaSaidaDTO> exibirArtistas(@RequestParam(required = false) Genero genero,
+                                              @RequestParam (required = false) String anoDeFundacao) {
     List<ArtistaSaidaDTO> listaDeArtistas = new ArrayList<>();
-    for (Artista artista : artistaService.aplicarFiltro(genero)) {
+    for (Artista artista : artistaService.aplicarFiltro(genero, anoDeFundacao)) {
       ArtistaSaidaDTO artistaSaidaDTO = modelMapper.map(artista, ArtistaSaidaDTO.class);
       listaDeArtistas.add(artistaSaidaDTO);
     }
