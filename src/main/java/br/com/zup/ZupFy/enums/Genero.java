@@ -1,6 +1,6 @@
 package br.com.zup.ZupFy.enums;
 
-public enum Generos {
+public enum Genero {
     ROCK,
     RAP,
     FUNK,
