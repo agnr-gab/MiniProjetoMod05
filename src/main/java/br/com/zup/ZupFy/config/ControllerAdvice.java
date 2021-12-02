@@ -1,5 +1,6 @@
 package br.com.zup.ZupFy.config;
 
+import br.com.zup.ZupFy.exceptions.CadastroExistenteException;
 import br.com.zup.ZupFy.exceptions.IdNaoEncontradoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -21,6 +22,12 @@ public class ControllerAdvice {
         return new MensagemDeErro(excecao.getLocalizedMessage());
     }
 
+    @ExceptionHandler(CadastroExistenteException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public MensagemDeErro cadastroExistenteException (CadastroExistenteException excecao) {
+        return new MensagemDeErro(excecao.getLocalizedMessage());
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public List<MensagemDeErro> manipularErrosDeSintaxe(MethodArgumentNotValidException exception) {
@@ -37,5 +44,7 @@ public class ControllerAdvice {
     public MensagemDeErro enumInvalidoException(HttpMessageNotReadableException excecao) {
         return new MensagemDeErro(excecao.getLocalizedMessage());
     }
+
+
 }
 

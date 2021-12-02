@@ -3,6 +3,7 @@ package br.com.zup.ZupFy.artista;
 import br.com.zup.ZupFy.album.Album;
 import br.com.zup.ZupFy.album.AlbumRepository;
 import br.com.zup.ZupFy.enums.Genero;
+import br.com.zup.ZupFy.exceptions.CadastroExistenteException;
 import br.com.zup.ZupFy.exceptions.IdNaoEncontradoException;
 import br.com.zup.ZupFy.gravadora.Gravadora;
 import br.com.zup.ZupFy.gravadora.GravadoraRepository;
@@ -30,7 +31,7 @@ public class ArtistaService {
   public Artista cadastrarArtista(Artista artista) {
     Optional<Artista> optionalArtista = artistaRepository.findById(artista.getId());
     if (optionalArtista.isPresent()) {
-      throw new RuntimeException(); //fazer excecao cadastroexistenteexception
+      throw new CadastroExistenteException("Cadastro já existente");
     }
 // refatorar em um método a parte
     List<Album> albuns = artista.getAlbuns();
