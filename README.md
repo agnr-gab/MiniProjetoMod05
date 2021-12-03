@@ -1,5 +1,5 @@
 # UML - Linguagem Unificada de Modelagem - Diagrama
-![enter image description here](https://i.ibb.co/N2wHgJt/ZupFy.png)
+![enter image description here](https://i.ibb.co/m5gfPXR/ZupFy.png)
 # Regras de Negócio
 
  - [x] Não é permitido cadastro de artistas com nome repetido.
@@ -81,6 +81,7 @@ Response Status 201
     
     }
 
+
 ## GET
 Endpoint: /artistas 
 
@@ -119,7 +120,7 @@ Endpoint: /artistas
       }
 
 ## GET
-Endpoint: /artistas/idArtista
+Endpoint: /artistas/{id}
 
     [
         {
@@ -137,9 +138,21 @@ Endpoint: /artistas/idArtista
             ]
         }
     ]
+## POST
+Endpoint:/albuns
+*Response Status 201*
+
+    {  "ano":  "2010",  
+	    "gravadora":  {  
+		    "id":  0,  
+		    "nome":  "string"  
+    },  
+	    "id":  0,  
+	    "nome":  "string"  
+    }
 
 ## PUT
-Endpoint: /albuns/idArtista
+Endpoint: /albuns/{id}
 
     { 
     "id": 3, 
@@ -153,5 +166,14 @@ Endpoint: /albuns/idArtista
 	    }
 
 ## DELETE
-Endpoint: /artistas/idArtista
-Response Status 204
+Endpoint: /artistas/{id}
+*Response Status 204*
+
+## Lista de Pendências
+
+ - Permitir cadastro de um álbum existente (com o mesmo nome), mas para artistas diferentes.
+ - Refatorar os métodos que não estão de acordo com o principio da responsabilidade única (Single Responsibility Principle).
+ - Considerar mais exceções através de testes mais específicos.
+ - Cadastrar gravadora quando um álbum for atualizado.
+ - Repensar lógica da exceção "cadastro existente exception", pois não está funcionando corretamente. 
+ 
