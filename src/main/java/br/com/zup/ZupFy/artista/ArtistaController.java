@@ -43,7 +43,7 @@ public class ArtistaController {
   @GetMapping
   @ApiOperation(value = "Método que permite pesquisar lista de artistas passando parâmetros ou não")
   public List<ArtistaSaidaDTO> exibirArtistas(@RequestParam(required = false) Genero genero,
-                                              @RequestParam (required = false) String anoDeFundacao) {
+                                              @RequestParam(required = false) String anoDeFundacao) {
     List<ArtistaSaidaDTO> listaDeArtistas = new ArrayList<>();
     for (Artista artista : artistaService.aplicarFiltro(genero, anoDeFundacao)) {
       ArtistaSaidaDTO artistaSaidaDTO = modelMapper.map(artista, ArtistaSaidaDTO.class);

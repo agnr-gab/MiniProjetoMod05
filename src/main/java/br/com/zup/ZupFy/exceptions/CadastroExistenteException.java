@@ -1,8 +1,9 @@
 package br.com.zup.ZupFy.exceptions;
 
-public class CadastroExistenteException extends RuntimeException{
+public class CadastroExistenteException extends RuntimeException {
 
-    public CadastroExistenteException(String message) {
-        super(message);
-    }
+  public CadastroExistenteException(String message) {
+    super(message);
+  }
+
 }

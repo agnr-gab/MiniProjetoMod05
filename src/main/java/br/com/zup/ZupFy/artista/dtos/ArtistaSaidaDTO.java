@@ -10,6 +10,6 @@ import lombok.Setter;
 
 public class ArtistaSaidaDTO {
 
-    private String nome;
+  private String nome;
 
 }

@@ -12,7 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 
 public class ArtistaResumoDTO {
-    private String nome;
-    private List<Album> albuns;
+
+  private String nome;
+  private List<Album> albuns;
 
 }

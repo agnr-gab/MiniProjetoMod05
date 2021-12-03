@@ -11,12 +11,11 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-
 public class Gravadora {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nome;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
+  private String nome;
 
 }

@@ -16,33 +16,33 @@ import java.util.List;
 @RestControllerAdvice
 public class ControllerAdvice {
 
-    @ExceptionHandler(IdNaoEncontradoException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public MensagemDeErro idNaoEncontradoException(IdNaoEncontradoException excecao) {
-        return new MensagemDeErro(excecao.getLocalizedMessage());
-    }
+  @ExceptionHandler(IdNaoEncontradoException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public MensagemDeErro idNaoEncontradoException(IdNaoEncontradoException excecao) {
+    return new MensagemDeErro(excecao.getLocalizedMessage());
+  }
 
-    @ExceptionHandler(CadastroExistenteException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public MensagemDeErro cadastroExistenteException(CadastroExistenteException excecao) {
-        return new MensagemDeErro(excecao.getLocalizedMessage());
-    }
+  @ExceptionHandler(CadastroExistenteException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public MensagemDeErro cadastroExistenteException(CadastroExistenteException excecao) {
+    return new MensagemDeErro(excecao.getLocalizedMessage());
+  }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public List<MensagemDeErro> manipularErrosDeSintaxe(MethodArgumentNotValidException exception) {
-        List<MensagemDeErro> listaDeErros = new ArrayList<>();
-        for (FieldError fieldError : exception.getFieldErrors()) {
-            MensagemDeErro mensagemDeErro = new MensagemDeErro(fieldError.getDefaultMessage());
-            listaDeErros.add(mensagemDeErro);
-        }
-        return listaDeErros;
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+  public List<MensagemDeErro> manipularErrosDeSintaxe(MethodArgumentNotValidException exception) {
+    List<MensagemDeErro> listaDeErros = new ArrayList<>();
+    for (FieldError fieldError : exception.getFieldErrors()) {
+      MensagemDeErro mensagemDeErro = new MensagemDeErro(fieldError.getDefaultMessage());
+      listaDeErros.add(mensagemDeErro);
     }
+    return listaDeErros;
+  }
 
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public MensagemDeErro enumInvalidoException(HttpMessageNotReadableException excecao) {
-        return new MensagemDeErro(excecao.getLocalizedMessage());
-    }
+  @ExceptionHandler(HttpMessageNotReadableException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public MensagemDeErro enumInvalidoException(HttpMessageNotReadableException excecao) {
+    return new MensagemDeErro(excecao.getLocalizedMessage());
+  }
 
 }

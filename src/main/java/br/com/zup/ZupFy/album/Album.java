@@ -14,14 +14,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Album {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(nullable = false, unique = true)
-    private String nome;
-    @Column(nullable = false, name = "ano")
-    private String ano;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private Gravadora gravadora;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
+  @Column(nullable = false, unique = true)
+  private String nome;
+  @Column(nullable = false, name = "ano")
+  private String ano;
+  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+  private Gravadora gravadora;
 
 }

@@ -19,16 +19,16 @@ import java.util.List;
 
 public class ArtistaEntradaDTO {
 
-    @NotBlank(message = "Campo não pode estar em branco")
-    @Size(min = 1, message = "O Campo dever ter pelo menos 1 caractere")
-    private String nome;
-    @NotNull(message = "Campo não pode ser nulo")
-    @Valid
-    private Genero genero;
-    @NotBlank(message = "Campo não pode estar em branco")
-    @Min(value = 4, message = "O Campo dever ter pelo menos 1 caractere")
-    private String anoDeFundacao;
-    @Valid
-    private List<Album> albuns;
+  @NotBlank(message = "Campo não pode estar em branco")
+  @Size(min = 1, message = "O Campo dever ter pelo menos 1 caractere")
+  private String nome;
+  @NotNull(message = "Campo não pode ser nulo")
+  @Valid
+  private Genero genero;
+  @NotBlank(message = "Campo não pode estar em branco")
+  @Size(min = 4, message = "O Campo dever ter pelo menos 4 caracteres")
+  private String anoDeFundacao;
+  @Valid
+  private List<Album> albuns;
 
 }

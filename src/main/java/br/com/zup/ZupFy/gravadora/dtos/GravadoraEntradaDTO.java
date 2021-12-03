@@ -10,7 +10,7 @@ import lombok.Setter;
 
 public class GravadoraEntradaDTO {
 
-    private int id;
-    private String nome;
+  private int id;
+  private String nome;
 
 }
