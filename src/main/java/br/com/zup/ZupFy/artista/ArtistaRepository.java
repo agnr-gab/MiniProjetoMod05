@@ -9,8 +9,8 @@ import java.util.List;
 @Repository
 public interface ArtistaRepository extends CrudRepository<Artista, Integer> {
 
-    List<Artista> findAllByGenero (Genero genero);
+  List<Artista> findAllByGenero(Genero genero);
 
-    List<Artista> findAllByAnoDeFundacao (String anoDeFundacao);
+  List<Artista> findAllByAnoDeFundacao(String anoDeFundacao);
 
 }

@@ -17,17 +17,17 @@ import java.util.List;
 
 public class Artista {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(nullable = false, unique = true)
-    private String nome;
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Genero genero;
-    @Column(nullable = false)
-    private String anoDeFundacao;
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private List<Album> albuns;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
+  @Column(nullable = false, unique = true)
+  private String nome;
+  @Column(nullable = false)
+  @Enumerated(EnumType.STRING)
+  private Genero genero;
+  @Column(nullable = false)
+  private String anoDeFundacao;
+  @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+  private List<Album> albuns;
 
 }
